@@ -36,10 +36,13 @@ function randomCards() {
                     <span class="frontSide__spanLoseBotton">${thisCardNumber}</span>`
             } else {
                 if (thisCardNumber == jokerAceNumber[0]) {
+                    let jokerHatImage = document.createElement("img")
                     card.children[0].children[1].innerHTML = `
                     <span class="frontSide__spanJokerTop">JOKER</span>
-                    <span class="frontSide__spanJokerIcon"><img src="src/assets/jokerHat.jpg" alt=""></span>
+                    <span class="frontSide__spanJokerIcon"></span>
                     <span class="frontSide__spanJokerBotton">JOKER</span>`
+                    card.children[0].children[1].children[1].insertAdjacentElement("beforeend", jokerHatImage)
+                    jokerHatImage.src = "src/assets/jokerHat.jpg"                    
                 }
                 if (thisCardNumber == jokerAceNumber[1]) {
                     card.children[0].children[1].innerHTML = `

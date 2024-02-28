@@ -38,7 +38,7 @@ function randomCards() {
                 if (thisCardNumber == jokerAceNumber[0]) {
                     card.children[0].children[1].innerHTML = `
                     <span class="frontSide__spanJokerTop">JOKER</span>
-                    <span class="frontSide__spanJokerIcon"><img src="src/assets/jokerHat.jpg" alt=""></span>
+                    <span class="frontSide__spanJokerIcon"><img src="src/assets/jokerHat.png" alt=""></span>
                     <span class="frontSide__spanJokerBotton">JOKER</span>`
                 }
                 if (thisCardNumber == jokerAceNumber[1]) {
@@ -52,4 +52,3 @@ function randomCards() {
     }    
 }
 randomCards()
-cardsDiv.insertAdjacentHTML("beforeend", `<img src="src/assets/jokerHat.jpg" alt="">`)

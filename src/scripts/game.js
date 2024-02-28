@@ -1,10 +1,10 @@
 let oneCardSelected = false
 const cardsDiv = document.getElementById("cardsDiv")
 function sortearNumeros() {
-    let jokerNumber = Math.floor(Math.random() * 8) + 1;
-    let aceNumber = Math.floor(Math.random() * 8) + 1;
+    let jokerNumber = Math.floor(Math.random() * 10) + 1;
+    let aceNumber = Math.floor(Math.random() * 10) + 1;
     while (jokerNumber === aceNumber) {
-        aceNumber = Math.floor(Math.random() * 8) + 1;
+        aceNumber = Math.floor(Math.random() * 10) + 1;
     }
 
     return [jokerNumber, aceNumber];

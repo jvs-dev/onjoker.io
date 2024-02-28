@@ -1,0 +1,11 @@
+.logo_a {
+    text-decoration: none;
+}
+.logo_h1 {
+    color: var(--white);
+    margin: 0px;
+    font-size: 24px;
+}
+.logo_h1 span {
+    color: var(--blue);
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>onjoker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="src/styles/reset.css">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/components/header/header.css">
+  <link rel="stylesheet" href="src/components/logo/logo.css">
+  <link rel="stylesheet" href="src/components/gameCard/gameCard.css">
+  <link rel="stylesheet" href="src/components/buttons/rules.css">
+  <link rel="stylesheet" href="src/components/errorPopup/errorPopup.css">
+</head>
+
+<body>
+  <main id="main">
+    <header class="main__header">
+      <a href="" class="logo_a">
+        <h1 class="logo_h1">ONJOKER<span>iO</span></h1>
+      </a>
+      <div class="header__div">
+        <button class="header__button">CONVIDE E GANHE</button>
+        <button class="header__button">SAQUE</button>
+        <button class="header__button">RECARGA</button>
+        <span class="header__span">R$ 0.00</span>
+        <div class="header__perfilDiv" id="perfilDiv">
+          <button type="button" id="perfilBtn" class="header__perfilBtn"><img src="" alt=""
+              class="header__perfilImg"></button>
+          <div class="perfilDiv__div" id="perfilMoreDiv">
+          </div>
+        </div>
+        <button class="header__loginBtn" id="loginBtn">Entrar</button>
+      </div>
+    </header>
+    <div class="div__cards" id="cardsDiv">
+
+    </div>
+    <button type="button" class="main__rules">REGRAS</button>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="src/scripts/game.js"></script>
+    <script type="module" src="src/scripts/login.js"></script>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+:root {
+    --white: #fff;        
+    --black: #1e1e1e;
+    --background-blue: #095499;    
+    --blue: #0F8CFF;
+    --header-black: #1F1F1F;
+    --card-black: #1F1F1F;    
+    --card-stroke: #1E1E1E;
+    --green: #52FF00;
+    --joker-green: #00FF85;
+    --red: #FE1B39;
+    --background-input: #d4e2ff9a;
+    --background-perfil-div: #303030;
+}
+
+body {
+    margin: 0px;
+}
+
+#main {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: var(--background-blue);
+    height: 100vh;
+}

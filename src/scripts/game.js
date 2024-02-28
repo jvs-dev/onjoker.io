@@ -49,7 +49,7 @@ function randomCards() {
                 }
             }
         }
-    }
-    cardsDiv.insertAdjacentHTML("beforeend", `<img src="src/assets/jokerHat.jpg" alt="">`)
+    }    
 }
 randomCards()
+cardsDiv.insertAdjacentHTML("beforeend", `<img src="src/assets/jokerHat.jpg" alt="">`)

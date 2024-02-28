@@ -1,3 +1,5 @@
+document.cookie = "secureCookie=1; SameSite=None; Secure";
+
 import { createError } from "./functions/error"
 import { firebaseConfig } from "./functions/firebaseConfig"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";

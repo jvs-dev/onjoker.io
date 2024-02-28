@@ -51,4 +51,4 @@ function randomCards() {
         }
     }
 }
-window.addEventListener('load', randomCards())
+randomCards()

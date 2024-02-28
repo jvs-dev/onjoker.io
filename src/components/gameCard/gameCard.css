@@ -7,6 +7,8 @@
     align-items: center;
     align-content: center;
     gap: 52px;
+    transition: 0.5s;
+    overflow: hidden;    
 }
 
 .gameCard {

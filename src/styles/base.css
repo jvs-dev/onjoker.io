@@ -24,4 +24,5 @@ body {
     font-family: 'Poppins', sans-serif;
     background: var(--background-blue);
     height: 100vh;
+    overflow: hidden;
 }

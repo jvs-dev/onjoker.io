@@ -38,7 +38,7 @@ function randomCards() {
                 if (thisCardNumber == jokerAceNumber[0]) {
                     card.children[0].children[1].innerHTML = `
                     <span class="frontSide__spanJokerTop">JOKER</span>
-                    <span class="frontSide__spanJokerIcon"><img src="https://cdn-icons-png.flaticon.com/128/2445/2445319.png" alt=""></span>
+                    <span class="frontSide__spanJokerIcon"><img src="../assets/jokerHat.png" alt=""></span>
                     <span class="frontSide__spanJokerBotton">JOKER</span>`
                 }
                 if (thisCardNumber == jokerAceNumber[1]) {

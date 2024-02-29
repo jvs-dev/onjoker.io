@@ -4,16 +4,20 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { verifyConectedUser } from "./functions/verifyConectedUser";
+import { getFirestore, collection, query, where, getDocs, getDoc, doc, setDoc, addDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
 const auth = getAuth();
+const db = getFirestore(app);
 let openMoreDiv = false
 let perfilDiv = document.getElementById("perfilDiv")
 let perfilBtn = document.getElementById("perfilBtn")
 let perfilMoreDiv = document.getElementById("perfilMoreDiv")
 let loginBtn = document.getElementById("loginBtn")
+let accountCash = document.getElementById("accountCash")
 let body = document.querySelector("body")
+
 body.onclick = function () {
     if (openMoreDiv == true) {
         perfilMoreDiv.innerHTML = ``
@@ -28,6 +32,7 @@ function isLogged() {
 }
 
 function isNotLogged() {
+    accountCash.textContent = "R$ 0.00"
     perfilDiv.style.display = "none"
     loginBtn.style.display = "flex"
     perfilBtn.children[0].src = ``
@@ -66,6 +71,7 @@ function initLogin() {
                 });
         } else {
             isLogged()
+            verifyData(result.email)
             perfilBtn.children[0].src = `${result.photoURL}`
             perfilDiv.onclick = function (event) {
                 event.stopPropagation()
@@ -107,20 +113,40 @@ function initLogin() {
     })
 }
 
-fetch('https://mercadopago-api-rest.vercel.app/api/createpay')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erro ao recuperar os dados da API: ' + response.status);
+async function verifyData(email) {
+    let accountExists = false
+    let q = query(collection(db, "users"), where("email", "==", `${email}`));
+    let querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        if (accountExists == false) {
+            loadAccountData(doc)
+            accountExists = true
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('Ocorreu um erro:', error);
     });
+    if (accountExists == false) {
+        createAccountData(email)
+        accountExists = false
+    }
+}
 
+async function createAccountData(email) {
+    let docRef = await addDoc(collection(db, "users"), {
+        email: `${email}`,
+        cash: 0,
+        inviteCode: ``,
+        invited: false
+    });
+    const washingtonRef = doc(db, "users", `${docRef.id}`);
+    await updateDoc(washingtonRef, {
+        inviteCode: `${docRef.id}`
+    });
+    verifyData(email)
+}
 
+function loadAccountData(data) {
+    const unsub = onSnapshot(doc(db, "users", `${data.id}`), (doc) => {
+        accountCash.textContent = `R$ ${doc.data().cash}.00`
+    });
+}
 
 initLogin()

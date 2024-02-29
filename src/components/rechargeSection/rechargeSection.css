@@ -1,0 +1,126 @@
+.main__rechargeSection {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.rechargeSection__container {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    width: 80vw;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.rechargeSection__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 20px 20px 0px 0px;
+    color: var(--header-black);
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.rechargeSection__h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--header-black);
+    margin: 5px 0px 20px 0px;
+}
+
+.rechargeSection__h2.red {
+    color: var(--red);
+    margin: 0px;
+}
+
+.rechargeSection__divPrices {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+}
+
+.rechargeSection__selectPrice {
+    color: var(--header-black);
+    background: var(--light-gray);    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: solid 1px var(--light-gray);
+    outline-width: 0px;
+    border-radius: 12px;
+    padding: 6px 12px;
+    font-weight: 800;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+}
+
+.rechargeSection__selectPrice.promo {
+    border: solid 1px var(--red);
+}
+
+.rechargeSection__selectPrice.promo::before {
+    content: '';
+    background: var(--red);
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: -4px -4px 0px 0px;
+}
+
+.rechargeSection__selectPrice.promo::after {
+    content: '+ 10R$ GRÁTIS';
+    color: red;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: -7px -155% 0px 0px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.rechargeSection__selectPrice.selected {
+    background: var(--joker-green);
+    border: solid 1px var(--joker-green);
+}
+
+.rechargeSection__p {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--header-black);
+    margin: 30px 0px 10px 0px;
+}
+
+.rechargeSection__confirmRecharge {
+    width: calc(100% - 40px);
+    max-width: 450px;
+    color: var(--white);
+    background: var(--blue);
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    padding: 5px 0px;
+    border: 0px;
+    outline-width: 0px;
+    cursor: pointer;
+}

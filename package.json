@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "mercadopago": "^2.0.8"
+    "mercadopago": "^2.0.8",
+    "qrcode": "^1.5.3"
   },
   "main": "vite.config.js",
   "keywords": [],

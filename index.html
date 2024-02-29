@@ -18,10 +18,39 @@
   <link rel="stylesheet" href="src/components/gameCard/gameCard.css">
   <link rel="stylesheet" href="src/components/buttons/rules.css">
   <link rel="stylesheet" href="src/components/errorPopup/errorPopup.css">
+  <link rel="stylesheet" href="src/components/audio/audio.css">
+  <link rel="stylesheet" href="src/components/rechargeSection/rechargeSection.css">
+  <link rel="stylesheet" href="src/components/paySection/paySection.css">
 </head>
 
 <body>
   <main id="main">
+    <section class="main__rechargeSection" id="rechargeSection">
+      <div class="rechargeSection__container">
+        <ion-icon class="rechargeSection__close" id="closeRechargeSection" name="close-outline"></ion-icon>
+        <h2 class="rechargeSection__h2 red">SEM SALDO?</h2>
+        <h2 class="rechargeSection__h2">RECARREGUE PARA JOGAR</h2>
+        <div class="rechargeSection__divPrices" id="rechargePricesDiv">          
+        </div>
+        <p class="rechargeSection__p">SELECIONE O VALOR PARA RECARGA</p>
+        <button class="rechargeSection__confirmRecharge" id="confirmPayValue">CONFIRMAR</button>
+      </div>
+    </section>
+    <section class="main__paySection" id="paySection">
+      <div class="paySection__container">
+        <h2 class="paySection__h2">AGORA É COM VOCÊ</h2>
+        <p class="paySection__p">QRCODE PIX:</p>
+        <img class="paySection__qrcode" id="payQrCodeImg" src="" alt="">
+        <div class="paySection__div">
+          <p class="paySection__p--2">CÓDIGO DE PAGAMENTO</p>
+          <div class="paySection__div--2">
+            <ion-icon class="paySection__copyIcon" name="copy-outline"></ion-icon>
+            <p class="paySection__payCode" id="payCode"></p>
+          </div>
+        </div>        
+        <button class="rechargeSection__confirmRecharge" id="confirmPay">CONFIRMAR</button>
+      </div>
+    </section>
     <header class="main__header">
       <a href="" class="logo_a">
         <h1 class="logo_h1">ONJOKER<span>iO</span></h1>
@@ -29,8 +58,8 @@
       <div class="header__div">
         <button class="header__button">CONVIDE E GANHE</button>
         <button class="header__button">SAQUE</button>
-        <button class="header__button">RECARGA</button>
-        <span class="header__span">R$ 0.00</span>
+        <button class="header__button" id="rechargeBtn">RECARGA</button>
+        <span class="header__span" id="accountCash">R$ 0.00</span>
         <div class="header__perfilDiv" id="perfilDiv">
           <button type="button" id="perfilBtn" class="header__perfilBtn"><img src="" alt=""
               class="header__perfilImg"></button>
@@ -39,16 +68,18 @@
         </div>
         <button class="header__loginBtn" id="loginBtn">Entrar</button>
       </div>
-    </header>    
+    </header>
     <div class="div__cards" id="cardsDiv">
 
     </div>
+    <audio src="src/assets/flipcard-91468.mp3" id="cardFlipSound"></audio>
     <button type="button" class="main__rules">REGRAS</button>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="module" src="src/scripts/game.js"></script>
     <script type="module" src="src/scripts/login.js"></script>
+    <script type="module" src="src/scripts/recharge.js"></script>
   </main>
 </body>
 

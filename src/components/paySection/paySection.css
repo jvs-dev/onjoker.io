@@ -1,0 +1,84 @@
+.main__paySection {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    transition: 0.2s;
+}
+
+.paySection__container {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 40px;
+    width: 80vw;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.paySection__h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--header-black);
+    margin: 0px 0px 5px 0px;
+}
+.paySection__p {
+    color: var(--header-black);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0px 0px 10px 0px;
+}
+.paySection__p--2 {
+    color: var(--header-black);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 10px 0px 4px 0px;
+}
+.paySection__div {
+    width: calc(100% - 40px);
+    max-width: 450px;            
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    margin: 0px 0px 10px 0px;
+}
+.paySection__div--2 {
+    width: 100%;
+    background: var(--light-gray);
+    color: var(--header-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 12px;
+    padding: 8px 10px;
+}
+.paySection__copyIcon  {
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--header-black);
+}
+.paySection__payCode {
+    width: 100%;
+    text-align: left;
+    color: var(--header-black);
+    font-size: 14px;
+    font-weight: 500;    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0px 0px 0px 10px;
+}
+.paySection__qrcode {
+    height: 30vh;
+}

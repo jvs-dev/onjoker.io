@@ -70,7 +70,7 @@ async function createPay(email, value) {
             },
             body: JSON.stringify(requestBody)
         };
-        fetch('http://localhost:3000/api/createpay', requestOptions)
+        fetch('https://mercadopago-api-rest.vercel.app/api/createpay', requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao enviar requisição: ' + response.status);

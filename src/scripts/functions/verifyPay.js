@@ -32,7 +32,7 @@ async function getPayData(id) {
             },
             body: JSON.stringify(requestBody)
         };
-        fetch('http://localhost:3000/api/getPay', requestOptions)
+        fetch('https://mercadopago-api-rest.vercel.app/api/getPay', requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao enviar requisição: ' + response.status);

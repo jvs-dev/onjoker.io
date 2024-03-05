@@ -88,12 +88,12 @@
 }
 
 .rechargeSection__selectPrice.promo::after {
-    content: '+ 10R$ GRÁTIS';
+    content: '+ 2R$ GRÁTIS';
     color: red;
     position: absolute;
     right: 0;
     top: 0;
-    margin: -7px -155% 0px 0px;
+    margin: -7px -150% 0px 0px;
     font-size: 12px;
     font-weight: 700;
 }

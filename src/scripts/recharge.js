@@ -1,8 +1,18 @@
+import { firebaseConfig } from "./functions/firebaseConfig"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore, collection, query, where, getDocs, getDoc, doc, setDoc, addDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { createError } from "./functions/error"
 import { verifyConectedUser } from "./functions/verifyConectedUser"
 import QRCode from 'qrcode';
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const provider = new GoogleAuthProvider();
+const auth = getAuth();
+const db = getFirestore(app);
 
-let prices = [10, 15, 20, 25, 30, 50]
+let prices = [1, 2, 5, 10, 15, 20]
 let priceSelected = prices[0]
 let closeRechargeSection = document.getElementById("closeRechargeSection")
 let rechargeSection = document.getElementById("rechargeSection")
@@ -37,17 +47,14 @@ confirmPay.onclick = function () {
 }
 
 async function generateQRCode(text) {
-    let QRbase64 = await new Promise((resolve, reject) => {
-        QRCode.toDataURL('I love tacos!!', function (err, code) {
-            if (err) {
-                reject(reject);
-                return;
-            }
-            resolve(code);
-        });
-    });
-    
-    console.log(QRbase64);
+    return new Promise(async (resolve) => {
+        try {
+            const qrCodeImage = await QRCode.toDataURL(text);
+            resolve(qrCodeImage)
+        } catch (error) {
+            resolve('error')
+        }
+    })
 }
 
 async function createPay(email, value) {
@@ -104,16 +111,21 @@ function loadPrices() {
 confirmPayValue.onclick = function () {
     rechargeSection.style.opacity = "0"
     verifyConectedUser().then((userData) => {
-        createPay(`${userData.email}`, priceSelected).then(data => {
+        createPay(`${userData.email}`, priceSelected).then(async (data) => {
             if (data.result.point_of_interaction != undefined) {
                 rechargeSection.style.display = "none"
                 paySection.style.opacity = "1"
                 paySection.style.display = "flex"
                 payCode.textContent = `${data.result.point_of_interaction.transaction_data.qr_code}`
-                generateQRCode(data.result.point_of_interaction.transaction_data.qr_code_base64).then((qrCodeLink) => {
+                generateQRCode(data.result.point_of_interaction.transaction_data.qr_code).then((qrCodeLink) => {
                     payQrCodeImg.src = `${qrCodeLink}`
-                })                
-                console.log(data.result.point_of_interaction.transaction_data);
+                })                                    
+                const docRef = await addDoc(collection(db, "payments"), {
+                    payerEmail: `${userData.email}`,
+                    paymentId: `${data.result.id}`,
+                    status: `${data.result.status}`,
+                    amount: `${data.result.transaction_amount}`
+                });
             } else {
                 paySection.style.opacity = "0"
                 setTimeout(() => {

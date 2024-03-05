@@ -145,7 +145,7 @@ async function createAccountData(email) {
 
 function loadAccountData(data) {
     const unsub = onSnapshot(doc(db, "users", `${data.id}`), (doc) => {
-        accountCash.textContent = `R$ ${doc.data().cash}.00`
+        accountCash.textContent = `R$ ${doc.data().cash.toFixed(2)}`
     });
 }
 

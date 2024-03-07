@@ -28,10 +28,36 @@
 
 <body>
   <main id="main">
+    <section class="main__rechargeSection" id="rulesSection">
+      <div class="rechargeSection__container reciveSection">
+        <h2 class="rechargeSection__h2">REGRAS</h2>
+        <p class="rulesSection__p">DENTRE AS 4 CARTAS PRESENTES NO JOGO UMA DELAS É O ÁS E A OUTRA O CORINGA</p>
+        <div class="rulesSection__demo" id="rulesDemo">
+          <span class="rulesSection__demo__fail">FAIL</span>
+          <div class="gameCard">
+            <div class="innerCard">
+              <div class="frontSide">
+                <span class="frontSide__spanTop">ONJOKER</span>
+                <span class="frontSide__spanNumber">1</span>
+                <span class="frontSide__spanBotton">ONJOKER</span>
+              </div>
+              <div class="backSide">
+                <span class="frontSide__spanLoseTop">1</span>
+                <span class="frontSide__spanLoseIcon"></span>
+                <span class="frontSide__spanLoseBotton">1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="rulesSection__p">SELECIONAR QUALQUER CARTA QUE NÂO SEJA UMA DAS CITADAS ACIMA RESULTARÁ EM FALHA</p>
+        <button class="rechargeSection__confirmRecharge" id="continueRules">CONFIRMAR</button>
+      </div>
+    </section>
+
     <section class="main__rechargeSection" id="reciveSection">
       <div class="rechargeSection__container reciveSection">
-        <ion-icon class="rechargeSection__close" id="closeReciveSection" name="close-outline"></ion-icon>        
-        <h2 class="rechargeSection__h2">SACAR</h2>        
+        <ion-icon class="rechargeSection__close" id="closeReciveSection" name="close-outline"></ion-icon>
+        <h2 class="rechargeSection__h2">SACAR</h2>
         <div class="reciveSection__div">
           <p class="reciveSection__p">CHAVE PIX</p>
           <input class="reciveSection__input" type="text" placeholder="EX: 719 8888- 8888" id="reciveKeyInput">
@@ -52,7 +78,7 @@
         <ion-icon class="rechargeSection__close" id="closeRechargeSection" name="close-outline"></ion-icon>
         <h2 class="rechargeSection__h2 red">SEM SALDO?</h2>
         <h2 class="rechargeSection__h2">RECARREGUE PARA JOGAR</h2>
-        <div class="rechargeSection__divPrices" id="rechargePricesDiv">          
+        <div class="rechargeSection__divPrices" id="rechargePricesDiv">
         </div>
         <p class="rechargeSection__p">SELECIONE O VALOR PARA RECARGA</p>
         <button class="rechargeSection__confirmRecharge" id="confirmPayValue">CONFIRMAR</button>
@@ -69,7 +95,7 @@
             <ion-icon class="paySection__copyIcon" id="copyCodeBtn" name="copy-outline"></ion-icon>
             <p class="paySection__payCode" id="payCode"></p>
           </div>
-        </div>        
+        </div>
         <button class="rechargeSection__confirmRecharge" id="confirmPay">CONFIRMAR</button>
       </div>
     </section>
@@ -82,29 +108,30 @@
         <button class="header__button">CONVIDE E GANHE</button>
         <button class="header__button" id="reciveBtn">SAQUE</button>
         <button class="header__button" id="rechargeBtn">RECARGA</button>
-        <span class="header__span" id="accountCash">R$ 0.00</span>        
+        <span class="header__span" id="accountCash">R$ 0.00</span>
         <div class="header__perfilDiv" id="perfilDiv">
           <button type="button" id="perfilBtn" class="header__perfilBtn"><img src="" alt=""
               class="header__perfilImg"></button>
           <div class="perfilDiv__div" id="perfilMoreDiv">
           </div>
         </div>
-        <button class="header__loginBtn" id="loginBtn">Entrar</button>        
+        <button class="header__loginBtn" id="loginBtn">Entrar</button>
       </div>
     </header>
     <div class="div__cards" id="cardsDiv">
 
     </div>
     <audio src="src/assets/flipcard-91468.mp3" id="cardFlipSound"></audio>
-    <button type="button" class="main__rules">REGRAS</button>
+    <button type="button" class="main__rules" id="rulesBtn">REGRAS</button>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="src/scripts/rules.js"></script>
     <script type="module" src="src/scripts/game.js"></script>
     <script type="module" src="src/scripts/login.js"></script>
     <script type="module" src="src/scripts/recharge.js"></script>
     <script type="module" src="src/scripts/recive.js"></script>
-    <script type="module" src="src/scripts/functions/verifyPay.js"></script>    
+    <script type="module" src="src/scripts/functions/verifyPay.js"></script>
   </main>
 </body>
 

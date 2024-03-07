@@ -50,7 +50,7 @@ function selectCard(email, result) {
     }
     if (result == "ace") {
         getMount().then(mountCash => {
-            let total = Number(mountCash)
+            let total = Number(mountCash) / 2
             incrementMount(-total)            
             incrementCash(email, total)
         })        

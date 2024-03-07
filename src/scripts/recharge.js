@@ -111,46 +111,54 @@ function loadPrices() {
 confirmPayValue.onclick = function () {
     rechargeSection.style.opacity = "0"
     verifyConectedUser().then((userData) => {
-        createPay(`${userData.email}`, priceSelected).then(async (data) => {
-            if (data.result.point_of_interaction != undefined) {
-                let copyCodeBtn = document.getElementById("copyCodeBtn")
-                rechargeSection.style.display = "none"
-                paySection.style.opacity = "1"
-                paySection.style.display = "flex"
-                payCode.textContent = `${data.result.point_of_interaction.transaction_data.qr_code}`
-                copyCodeBtn.onclick = function () {                          
-                    let temporaryInput = document.createElement('textarea');                    
-                    temporaryInput.value = payCode.textContent;                      
-                    document.body.appendChild(temporaryInput);                    
-                    temporaryInput.select();
-                    document.execCommand('copy');                    
-                    document.body.removeChild(temporaryInput);   
-                    copyCodeBtn.name = "checkmark-circle-outline"                                                     
-                    copyCodeBtn.style.color = "var(--joker-green)"
-                    setTimeout(() => {
-                        copyCodeBtn.name = "copy-outline"
-                        copyCodeBtn.style.color = ""
-                    }, 2000);
-                }
-                generateQRCode(data.result.point_of_interaction.transaction_data.qr_code).then((qrCodeLink) => {
-                    payQrCodeImg.src = `${qrCodeLink}`
-                })
-                const docRef = await addDoc(collection(db, "payments"), {
-                    payerEmail: `${userData.email}`,
-                    paymentId: `${data.result.id}`,
-                    status: `${data.result.status}`,
-                    amount: `${data.result.transaction_amount}`
-                });
-            } else {
-                console.log(data);
-                createError('Ocorreu um erro na transação', 'error')
-                paySection.style.opacity = "0"
-                setTimeout(() => {
-                    paySection.style.display = "none"
+        if (userData != 'User is signed out') {
+            createPay(`${userData.email}`, priceSelected).then(async (data) => {
+                if (data.result.point_of_interaction != undefined) {
+                    let copyCodeBtn = document.getElementById("copyCodeBtn")
                     rechargeSection.style.display = "none"
-                }, 200);
-            }
-        })
+                    paySection.style.opacity = "1"
+                    paySection.style.display = "flex"
+                    payCode.textContent = `${data.result.point_of_interaction.transaction_data.qr_code}`
+                    copyCodeBtn.onclick = function () {                          
+                        let temporaryInput = document.createElement('textarea');                    
+                        temporaryInput.value = payCode.textContent;                      
+                        document.body.appendChild(temporaryInput);                    
+                        temporaryInput.select();
+                        document.execCommand('copy');                    
+                        document.body.removeChild(temporaryInput);   
+                        copyCodeBtn.name = "checkmark-circle-outline"                                                     
+                        copyCodeBtn.style.color = "var(--joker-green)"
+                        setTimeout(() => {
+                            copyCodeBtn.name = "copy-outline"
+                            copyCodeBtn.style.color = ""
+                        }, 2000);
+                    }
+                    generateQRCode(data.result.point_of_interaction.transaction_data.qr_code).then((qrCodeLink) => {
+                        payQrCodeImg.src = `${qrCodeLink}`
+                    })
+                    const docRef = await addDoc(collection(db, "payments"), {
+                        payerEmail: `${userData.email}`,
+                        paymentId: `${data.result.id}`,
+                        status: `${data.result.status}`,
+                        amount: `${data.result.transaction_amount}`
+                    });
+                } else {                    
+                    createError('Ocorreu um erro na transação', 'error')
+                    paySection.style.opacity = "0"
+                    setTimeout(() => {
+                        paySection.style.display = "none"
+                        rechargeSection.style.display = "none"
+                    }, 200);
+                }
+            })
+        } else {
+            createError('Faça login para recarregar', 'error')
+            paySection.style.opacity = "0"
+                    setTimeout(() => {
+                        paySection.style.display = "none"
+                        rechargeSection.style.display = "none"
+                    }, 200);
+        }
     })
 }
 

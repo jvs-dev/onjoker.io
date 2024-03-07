@@ -70,7 +70,7 @@ async function createPay(email, value) {
             },
             body: JSON.stringify(requestBody)
         };
-        fetch('https://mercadopago-api-rest.vercel.app/api/createpay', requestOptions)
+        fetch('http://localhost:3000/api/createpay', requestOptions)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao enviar requisição: ' + response.status);
@@ -111,7 +111,7 @@ function loadPrices() {
 confirmPayValue.onclick = function () {
     rechargeSection.style.opacity = "0"
     verifyConectedUser().then((userData) => {
-        createPay(`${userData.email}`, priceSelected).then(async (data) => {
+        createPay(`${userData.email}`, priceSelected).then(async (data) => {            
             if (data.result.point_of_interaction != undefined) {
                 rechargeSection.style.display = "none"
                 paySection.style.opacity = "1"
@@ -127,11 +127,11 @@ confirmPayValue.onclick = function () {
                     amount: `${data.result.transaction_amount}`
                 });
             } else {
+                createError('Ocorreu um erro na transação', 'error')
                 paySection.style.opacity = "0"
                 setTimeout(() => {
                     paySection.style.display = "none"
-                }, 200);
-                createError('Ocorreu um erro na transação', 'error')
+                }, 200);                                
             }
         })
     })

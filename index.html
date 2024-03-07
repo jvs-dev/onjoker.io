@@ -21,10 +21,31 @@
   <link rel="stylesheet" href="src/components/audio/audio.css">
   <link rel="stylesheet" href="src/components/rechargeSection/rechargeSection.css">
   <link rel="stylesheet" href="src/components/paySection/paySection.css">
+  <link rel="stylesheet" href="src/components/reciveSection/reciveSection.css">
+  <link rel="stylesheet" href="src/styles/mobile.css">
 </head>
 
 <body>
   <main id="main">
+    <section class="main__rechargeSection" id="reciveSection">
+      <div class="rechargeSection__container reciveSection">
+        <ion-icon class="rechargeSection__close" id="closeReciveSection" name="close-outline"></ion-icon>        
+        <h2 class="rechargeSection__h2">SACAR</h2>        
+        <div class="reciveSection__div">
+          <p class="reciveSection__p">CHAVE PIX</p>
+          <input class="reciveSection__input" type="text" placeholder="EX: 719 8888- 8888" id="reciveKeyInput">
+        </div>
+        <div class="reciveSection__div">
+          <p class="reciveSection__p">NOME COMPLETO</p>
+          <input class="reciveSection__input" type="text" placeholder="EX: John Doe Santos" id="reciveNameInput">
+        </div>
+        <div class="reciveSection__div">
+          <p class="reciveSection__p">QUAL VALOR DESEJA SACAR?(MIN R$20)</p>
+          <input class="reciveSection__input" type="number" min="20" placeholder="20.0" id="reciveCashInput">
+        </div>
+        <button class="rechargeSection__confirmRecharge" id="confirmRecive">CONFIRMAR</button>
+      </div>
+    </section>
     <section class="main__rechargeSection" id="rechargeSection">
       <div class="rechargeSection__container">
         <ion-icon class="rechargeSection__close" id="closeRechargeSection" name="close-outline"></ion-icon>
@@ -52,21 +73,22 @@
       </div>
     </section>
     <header class="main__header">
+      <img src="https://img.hotimg.com/jokerHat.jpeg" alt="" class="mobile__logo">
       <a href="" class="logo_a">
         <h1 class="logo_h1">ONJOKER<span>iO</span></h1>
       </a>
       <div class="header__div">
         <button class="header__button">CONVIDE E GANHE</button>
-        <button class="header__button">SAQUE</button>
+        <button class="header__button" id="reciveBtn">SAQUE</button>
         <button class="header__button" id="rechargeBtn">RECARGA</button>
-        <span class="header__span" id="accountCash">R$ 0.00</span>
+        <span class="header__span" id="accountCash">R$ 0.00</span>        
         <div class="header__perfilDiv" id="perfilDiv">
           <button type="button" id="perfilBtn" class="header__perfilBtn"><img src="" alt=""
               class="header__perfilImg"></button>
           <div class="perfilDiv__div" id="perfilMoreDiv">
           </div>
         </div>
-        <button class="header__loginBtn" id="loginBtn">Entrar</button>
+        <button class="header__loginBtn" id="loginBtn">Entrar</button>        
       </div>
     </header>
     <div class="div__cards" id="cardsDiv">
@@ -80,7 +102,8 @@
     <script type="module" src="src/scripts/game.js"></script>
     <script type="module" src="src/scripts/login.js"></script>
     <script type="module" src="src/scripts/recharge.js"></script>
-    <script type="module" src="src/scripts/functions/verifyPay.js"></script>
+    <script type="module" src="src/scripts/recive.js"></script>
+    <script type="module" src="src/scripts/functions/verifyPay.js"></script>    
   </main>
 </body>
 

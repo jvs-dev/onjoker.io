@@ -8,9 +8,9 @@ const cardsDiv = document.getElementById("cardsDiv")
 
 function sortearNumeros() {
     let jokerNumber = Math.floor(Math.random() * 10) + 1;
-    let aceNumber = Math.floor(Math.random() * 20) + 1;
+    let aceNumber = Math.floor(Math.random() * 10) + 1;
     while (jokerNumber === aceNumber) {
-        aceNumber = Math.floor(Math.random() * 20) + 1;
+        aceNumber = Math.floor(Math.random() * 10) + 1;
     }
 
     return [jokerNumber, aceNumber];
@@ -35,7 +35,7 @@ function selectCard(result) {
 function randomCards() {
     cardsDiv.innerHTML = ``
     const jokerAceNumber = sortearNumeros();
-    for (let index = 0; index < 8; index++) {
+    for (let index = 0; index < 4; index++) {
         let thisCardNumber = index + 1
         let card = document.createElement("div")
         cardsDiv.insertAdjacentElement("beforeend", card)

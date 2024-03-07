@@ -77,14 +77,24 @@ function initLogin() {
                 event.stopPropagation()
                 if (openMoreDiv == false) {
                     let buttonAccounts = document.createElement("button")
+                    let buttonWithdraw = document.createElement("button")
                     let buttonExit = document.createElement("button")
                     perfilMoreDiv.insertAdjacentElement("beforeend", buttonAccounts)
+                    perfilMoreDiv.insertAdjacentElement("beforeend", buttonWithdraw)
                     perfilMoreDiv.insertAdjacentElement("beforeend", buttonExit)
                     buttonAccounts.classList.add("perfilDiv__btn")
+                    buttonWithdraw.classList.add("perfilDiv__btn")
                     buttonExit.classList.add("perfilDiv__btn")
                     buttonExit.classList.add("red")
                     buttonExit.innerHTML = `<ion-icon name="exit-outline"></ion-icon>Sair`
+                    buttonWithdraw.innerHTML = `<ion-icon name="wallet-outline"></ion-icon> Sacar`
                     buttonAccounts.innerHTML = `<ion-icon name="people-outline"></ion-icon>Trocar conta`
+                    buttonWithdraw.onclick = function () {
+                        document.getElementById("reciveSection").style.display = "flex"
+                        setTimeout(() => {
+                            document.getElementById("reciveSection").style.opacity = "1"
+                        }, 1);
+                    }
                     buttonExit.onclick = function () {
                         signOut(auth).then(() => {
                             isNotLogged()

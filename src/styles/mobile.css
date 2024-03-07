@@ -129,11 +129,20 @@
     }
     .rechargeSection__container {
         width: 100vw;
+        padding: 40px 10px;
     }
     .rechargeSection__h2 {
         text-align: center;
+        line-height: 120%;
     }
     .rechargeSection__selectPrice.promo::after {
         margin: -18px -131% 0px 0px;
+    }
+    .paySection__container {
+        width: 100vw;
+        padding: 40px 10px;
+    }
+    .paySection__div {
+        align-items: center;
     }
 }

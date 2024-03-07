@@ -62,7 +62,7 @@ async function userPayed(userData, id, payData, vouncherData) {
     });
     const mountRef = doc(db, "mount", `main`);
     await updateDoc(mountRef, {
-        totalCash: increment(Number(vouncherData.amount))
+        totalCash: increment(Number(vouncherData.amount) / 2)
     });
 
 

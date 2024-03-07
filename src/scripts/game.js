@@ -8,7 +8,7 @@ let cardFlipSound = document.getElementById("cardFlipSound")
 const cardsDiv = document.getElementById("cardsDiv")
 
 function sortearNumeros() {
-    let jokerNumber = Math.floor(Math.random() * 25) + 1;
+    let jokerNumber = Math.floor(Math.random() * 50) + 1;
     let aceNumber = Math.floor(Math.random() * 50) + 1;
     while (jokerNumber === aceNumber) {
         aceNumber = Math.floor(Math.random() * 50) + 1;

@@ -50,7 +50,11 @@ async function deletePay(id) {
 }
 
 async function userPayed(userData, id, payData, vouncherData) {
-    incrementCash(userData.email, vouncherData.amount)    
+    if (Number(vouncherData.amount) == 20) {
+        incrementCash(userData.email, Number(vouncherData.amount) + 2)
+    } else {
+        incrementCash(userData.email, vouncherData.amount)
+    }        
 
     const paymentRef = doc(db, "payments", `${id}`);
     await updateDoc(paymentRef, {

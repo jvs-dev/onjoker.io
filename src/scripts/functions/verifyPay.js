@@ -56,6 +56,10 @@ async function userPayed(userData, id, payData, vouncherData) {
     await updateDoc(paymentRef, {
         status: `${payData.result.status}`
     });
+    const mountRef = doc(db, "mount", `main`);
+    await updateDoc(mountRef, {
+        totalCash: increment(Number(vouncherData.amount))
+    });
 
 
 }

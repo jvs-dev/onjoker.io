@@ -127,10 +127,12 @@ confirmPayValue.onclick = function () {
                     amount: `${data.result.transaction_amount}`
                 });
             } else {
+                console.log(data);
                 createError('Ocorreu um erro na transação', 'error')
                 paySection.style.opacity = "0"
                 setTimeout(() => {
                     paySection.style.display = "none"
+                    rechargeSection.style.display = "none"
                 }, 200);                                
             }
         })

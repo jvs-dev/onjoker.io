@@ -24,11 +24,31 @@
   <link rel="stylesheet" href="src/components/paySection/paySection.css">
   <link rel="stylesheet" href="src/components/reciveSection/reciveSection.css">
   <link rel="stylesheet" href="src/components/rules/rules.css">
+  <!-- <link rel="stylesheet" href="src/components/invite/invite.css"> -->
   <link rel="stylesheet" href="src/styles/mobile.css">
 </head>
 
 <body>
   <main id="main">
+    <!-- <section class="main__rechargeSection" id="inviteSection">
+      <div class="rechargeSection__container inviteSection">
+        <ion-icon class="rechargeSection__close" id="closeInviteSection" name="close-outline"></ion-icon>
+        <h2 class="rechargeSection__h2"><i class="bi bi-coin inviteSection__titleIcon"></i>CONVIDE E GANHE<i class="bi bi-coin inviteSection__titleIcon"></i></h2>
+        <div class="inviteSection__div">
+          <p class="inviteSection__p">SEU CÓDIGO DE CONVITE</p>
+          <div class="inviteSection__div--2">
+            <ion-icon class="inviteSection__copyIcon" name="copy-outline" id="inviteSectionCopyIcon"></ion-icon>
+            <p class="inviteSection__copyP" id="inviteSectionMyInviteCode">JEa4ZyWtZrbLeho5ddLQ</p>
+          </div>          
+        </div>
+        <div class="inviteSection__div">
+          <p class="inviteSection__p">CÓDIGO DE CONVITE</p>
+          <input class="inviteSection__input" type="text" placeholder="Código de quem te convidou" id="inviteSectionInviteCode">
+        </div>
+        <button class="rechargeSection__confirmRecharge" id="confirmInvite">CONFIRMAR</button>
+      </div>
+    </section>
+ -->
     <section class="main__rechargeSection" id="rulesSection">
       <div class="rechargeSection__container rulesSection">
         <h2 class="rechargeSection__h2">REGRAS</h2>
@@ -92,7 +112,7 @@
         <h1 class="logo_h1">ONJOKER<span>iO</span></h1>
       </a>
       <div class="header__div">
-        <button class="header__button">CONVIDE E GANHE</button>
+        <button class="header__button" id="inviteBtn">CONVIDE E GANHE</button>
         <button class="header__button" id="reciveBtn">SAQUE</button>
         <button class="header__button" id="rechargeBtn">RECARGA</button>
         <span class="header__span" id="accountCash">R$ 0.00</span>
@@ -114,6 +134,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="module" src="src/scripts/rules.js"></script>
+    <script type="module" src="src/scripts/invite.js"></script>
     <script type="module" src="src/scripts/game.js"></script>
     <script type="module" src="src/scripts/login.js"></script>
     <script type="module" src="src/scripts/recharge.js"></script>

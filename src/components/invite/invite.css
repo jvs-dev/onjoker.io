@@ -1,0 +1,77 @@
+/* .rechargeSection__container.inviteSection {
+    background: var(--card-black);
+}
+
+.inviteSection .rechargeSection__h2 {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    margin: 0px 0px 20px 0px;
+    gap: 10px;
+}
+
+.inviteSection .rechargeSection__close {
+    color: var(--white);
+}
+
+.inviteSection__titleIcon {
+    color: var(--joker-green);
+}
+
+.inviteSection__p {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0px 0px 2px 0px;
+}
+
+.inviteSection__div {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+    width: calc(100% - 40px);
+    max-width: 450px;
+    margin: 0px 0px 20px 0px;
+}
+
+.inviteSection__div--2 {
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    width: 100%;
+    background: var(--white);
+    border-radius: 6px;
+    padding: 5px 10px;
+}
+
+.inviteSection__copyIcon {
+    color: var(--card-black);
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.inviteSection__copyP {
+    text-align: center;
+    width: 100%;
+    color: var(--card-black);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0px 0px 0px 10px;
+}
+.inviteSection__input {
+    width: 100%;
+    padding: 0px 10px;
+    height: 35px;
+    color: var(--card-black);
+    border-radius: 6px;
+    border: 0px;
+    outline-width: 0px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.inviteSection__input::placeholder {
+    opacity: 0.7;
+} */

@@ -8,10 +8,10 @@ let cardFlipSound = document.getElementById("cardFlipSound")
 const cardsDiv = document.getElementById("cardsDiv")
 
 function sortearNumeros() {
-    let jokerNumber = Math.floor(Math.random() * 50) + 1;
-    let aceNumber = Math.floor(Math.random() * 50) + 1;
+    let jokerNumber = 10/* Math.floor(Math.random() * 50) + 1; */
+    let aceNumber = 10/* Math.floor(Math.random() * 50) + 1; */
     while (jokerNumber === aceNumber) {
-        aceNumber = Math.floor(Math.random() * 50) + 1;
+        aceNumber = 10/* Math.floor(Math.random() * 50) + 1; */
     }
 
     return [jokerNumber, aceNumber];

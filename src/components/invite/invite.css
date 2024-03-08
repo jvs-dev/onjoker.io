@@ -1,4 +1,4 @@
-/* .rechargeSection__container.inviteSection {
+.rechargeSection__container.inviteSection {
     background: var(--card-black);
 }
 
@@ -74,4 +74,4 @@
 }
 .inviteSection__input::placeholder {
     opacity: 0.7;
-} */
+}

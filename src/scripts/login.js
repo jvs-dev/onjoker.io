@@ -94,7 +94,7 @@ function initLogin() {
                     buttonWithdraw.innerHTML = `<ion-icon name="wallet-outline"></ion-icon> Sacar`
                     buttonInvite.innerHTML = `<ion-icon name="cash-outline"></ion-icon> Convid. e ganhe`
                     buttonAccounts.innerHTML = `<ion-icon name="people-outline"></ion-icon>Trocar conta`
-                    buttonInvite.onclick = function () {                           
+                    buttonInvite.onclick = function () {
                         verifyConectedUser().then(actualUser => {
                             if (actualUser != 'User is signed out') {
                                 getUserDoc(actualUser.email).then(userDoc => {
@@ -102,6 +102,10 @@ function initLogin() {
                                     inviteSection.style.display = "flex"
                                     setTimeout(() => {
                                         inviteSection.style.opacity = "1"
+                                        if (openMoreDiv == true) {
+                                            perfilMoreDiv.innerHTML = ``
+                                            openMoreDiv = false
+                                        }
                                     }, 1);
                                 })
                             } else {
@@ -113,11 +117,19 @@ function initLogin() {
                         document.getElementById("reciveSection").style.display = "flex"
                         setTimeout(() => {
                             document.getElementById("reciveSection").style.opacity = "1"
+                            if (openMoreDiv == true) {
+                                perfilMoreDiv.innerHTML = ``
+                                openMoreDiv = false
+                            }
                         }, 1);
                     }
                     buttonExit.onclick = function () {
                         signOut(auth).then(() => {
                             isNotLogged()
+                            if (openMoreDiv == true) {
+                                perfilMoreDiv.innerHTML = ``
+                                openMoreDiv = false
+                            }
                         }).catch((error) => {
                             console.log("erro ao sair");
                         });
@@ -129,6 +141,10 @@ function initLogin() {
                                 const token = credential.accessToken;
                                 const user = result.user;
                                 initLogin()
+                                if (openMoreDiv == true) {
+                                    perfilMoreDiv.innerHTML = ``
+                                    openMoreDiv = false
+                                }
                             }).catch((error) => {
                                 const errorCode = error.code;
                                 const errorMessage = error.message;

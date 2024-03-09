@@ -12,7 +12,7 @@ const provider = new GoogleAuthProvider();
 const auth = getAuth();
 const db = getFirestore(app);
 
-let prices = [5, 10, 15, 20, 25, 50]
+let prices = [1, 2, 5, 10, 15, 20]
 let priceSelected = prices[0]
 let closeRechargeSection = document.getElementById("closeRechargeSection")
 let rechargeSection = document.getElementById("rechargeSection")

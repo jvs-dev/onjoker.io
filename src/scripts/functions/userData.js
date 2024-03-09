@@ -41,10 +41,6 @@ export async function getUserDocById(id) {
     })
 }
 
-export async function getUserInvite(id) {
-
-}
-
 export async function updateUserInvite(id) {
     let washingtonRef = doc(db, "users", `${id}`);
     await updateDoc(washingtonRef, {

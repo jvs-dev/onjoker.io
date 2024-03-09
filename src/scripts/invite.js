@@ -4,8 +4,9 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { getFirestore, collection, query, where, getDocs, getDoc, doc, setDoc, addDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { createError } from "./functions/error"
-import { getUserDoc, getUserDocById } from "./functions/userData"
+import { getUserDoc, getUserDocById, updateUserInvite } from "./functions/userData"
 import { verifyConectedUser } from "./functions/verifyConectedUser"
+import { incrementCash } from "./functions/userCash";
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
@@ -54,16 +55,33 @@ confirmInvite.onclick = function () {
         if (actualUser != 'User is signed out') {
             let inviteSectionInviteCode = document.getElementById("inviteSectionInviteCode").value
             if (inviteSectionInviteCode != "") {
-                getUserDocById(inviteSectionInviteCode).then(result => {
-                    if (result != 'account is not exists') {
-                        if (result.email != actualUser.email) {
-                            /* console.log(result); */
-                        } else {
-                            createError('Você não pode se convidar', 'error')
-                        }
+                getUserDoc(actualUser.email).then(actualUserStoreData => {
+                    if (actualUserStoreData.data().invited == false) {
+                        getUserDocById(inviteSectionInviteCode).then(result => {
+                            if (result != 'account is not exists') {
+                                if (result.email != actualUser.email) {
+                                    updateUserInvite(actualUserStoreData.id)
+                                    if (actualUserStoreData.data().cash <= 15) {
+                                        incrementCash(actualUser.email, 2)
+                                    }
+                                    if (result.cash <= 15) {
+                                        incrementCash(result.email, 2)
+                                    }
+                                    inviteSection.style.opacity = "0"
+                                    setTimeout(() => {
+                                        inviteSection.style.display = "none"
+                                        document.getElementById("inviteSectionInviteCode").value = ""
+                                    }, 200);
+                                } else {
+                                    createError('Você não pode se convidar', 'error')
+                                }
 
+                            } else {
+                                createError('Código não registrado', 'error')
+                            }
+                        })
                     } else {
-                        createError('Código não registrado', 'error')
+                        createError('Você já foi convidado', 'error')
                     }
                 })
             } else {

@@ -28,3 +28,26 @@ export async function getUserDoc(email) {
         return userDoc
     }
 }
+
+export async function getUserDocById(id) {
+    return new Promise(async (resolve) => {
+        let docRef = doc(db, "users", `${id}`);
+        let docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+            resolve(docSnap.data())
+        } else {
+            resolve('account is not exists')
+        }
+    })
+}
+
+export async function getUserInvite(id) {
+
+}
+
+export async function updateUserInvite(id) {
+    let washingtonRef = doc(db, "users", `${id}`);
+    await updateDoc(washingtonRef, {
+        invited: true
+    });
+}

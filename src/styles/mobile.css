@@ -145,4 +145,8 @@
     .paySection__div {
         align-items: center;
     }
+    .rechargeSection__container.inviteSection {
+        padding-top: 60px;
+        padding-bottom: 40px;        
+    }
 }

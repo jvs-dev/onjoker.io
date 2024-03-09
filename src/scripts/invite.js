@@ -18,6 +18,14 @@ let inviteSection = document.getElementById("inviteSection")
 let confirmInvite = document.getElementById("confirmInvite")
 let inviteSectionCopyIcon = document.getElementById("inviteSectionCopyIcon")
 let inviteSectionMyInviteCode = document.getElementById("inviteSectionMyInviteCode")
+let closeInviteSection = document.getElementById("closeInviteSection")
+
+closeInviteSection.onclick = function () {
+    inviteSection.style.opacity = "0"
+    setTimeout(() => {
+        inviteSection.style.display = "none"
+    }, 200);
+}
 
 inviteBtn.onclick = function () {
     verifyConectedUser().then(actualUser => {
@@ -62,10 +70,10 @@ confirmInvite.onclick = function () {
                                 if (result.email != actualUser.email) {
                                     updateUserInvite(actualUserStoreData.id)
                                     if (actualUserStoreData.data().cash <= 15) {
-                                        incrementCash(actualUser.email, 2)
+                                        incrementCash(actualUser.email, 1)
                                     }
                                     if (result.cash <= 15) {
-                                        incrementCash(result.email, 2)
+                                        incrementCash(result.email, 1)
                                     }
                                     inviteSection.style.opacity = "0"
                                     setTimeout(() => {

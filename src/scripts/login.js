@@ -5,6 +5,7 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import { verifyConectedUser } from "./functions/verifyConectedUser";
 import { getFirestore, collection, query, where, getDocs, getDoc, doc, setDoc, addDoc, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getUserDoc } from "./functions/userData";
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const provider = new GoogleAuthProvider();
@@ -78,17 +79,36 @@ function initLogin() {
                 if (openMoreDiv == false) {
                     let buttonAccounts = document.createElement("button")
                     let buttonWithdraw = document.createElement("button")
+                    let buttonInvite = document.createElement("button")
                     let buttonExit = document.createElement("button")
                     perfilMoreDiv.insertAdjacentElement("beforeend", buttonAccounts)
                     perfilMoreDiv.insertAdjacentElement("beforeend", buttonWithdraw)
+                    perfilMoreDiv.insertAdjacentElement("beforeend", buttonInvite)
                     perfilMoreDiv.insertAdjacentElement("beforeend", buttonExit)
                     buttonAccounts.classList.add("perfilDiv__btn")
                     buttonWithdraw.classList.add("perfilDiv__btn")
+                    buttonInvite.classList.add("perfilDiv__btn")
                     buttonExit.classList.add("perfilDiv__btn")
                     buttonExit.classList.add("red")
                     buttonExit.innerHTML = `<ion-icon name="exit-outline"></ion-icon>Sair`
                     buttonWithdraw.innerHTML = `<ion-icon name="wallet-outline"></ion-icon> Sacar`
+                    buttonInvite.innerHTML = `<ion-icon name="cash-outline"></ion-icon> Convid. e ganhe`
                     buttonAccounts.innerHTML = `<ion-icon name="people-outline"></ion-icon>Trocar conta`
+                    buttonInvite.onclick = function () {                           
+                        verifyConectedUser().then(actualUser => {
+                            if (actualUser != 'User is signed out') {
+                                getUserDoc(actualUser.email).then(userDoc => {
+                                    inviteSectionMyInviteCode.textContent = `${userDoc.data().inviteCode}`
+                                    inviteSection.style.display = "flex"
+                                    setTimeout(() => {
+                                        inviteSection.style.opacity = "1"
+                                    }, 1);
+                                })
+                            } else {
+                                createError('Faça login para continuar', 'error')
+                            }
+                        })
+                    }
                     buttonWithdraw.onclick = function () {
                         document.getElementById("reciveSection").style.display = "flex"
                         setTimeout(() => {

@@ -51,7 +51,7 @@ async function deletePay(id) {
 
 async function userPayed(userData, id, payData, vouncherData) {
     if (Number(vouncherData.amount) == 20) {
-        incrementCash(userData.email, Number(vouncherData.amount) + 2)
+        incrementCash(userData.email, Number(vouncherData.amount) + 5)
     } else {
         incrementCash(userData.email, vouncherData.amount)
     }        

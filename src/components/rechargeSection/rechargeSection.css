@@ -88,7 +88,7 @@
 }
 
 .rechargeSection__selectPrice.promo::after {
-    content: '+ 2R$ GRÁTIS';
+    content: '+ 5R$ GRÁTIS';
     color: red;
     position: absolute;
     right: 0;

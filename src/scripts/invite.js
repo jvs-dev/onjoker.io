@@ -70,7 +70,7 @@ confirmInvite.onclick = function () {
                                 if (result.email != actualUser.email) {
                                     updateUserInvite(actualUserStoreData.id)
                                     if (actualUserStoreData.data().cash <= 15) {
-                                        incrementCash(actualUser.email, 1)
+                                        incrementCash(actualUser.email, 2)
                                     }
                                     if (result.cash <= 15) {
                                         incrementCash(result.email, 1)
